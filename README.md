@@ -1,114 +1,112 @@
-### Template React Native com Expo + NativeWind
+# FIAP Helpers!!
 
-Este repositório é um template para iniciar rapidamente um app React Native utilizando Expo, TypeScript e NativeWind (Tailwind CSS para React Native). Ele já vem configurado com as dependências e arquivos necessários para começar a estilizar com classes utilitárias.
+##  Descrição do Projeto
 
-### Tecnologias
-- **Expo**: fluxo de desenvolvimento simplificado para React Native
-- **React Native**: desenvolvimento mobile nativo com React
-- **TypeScript**: tipagem estática para maior segurança
-- **NativeWind**: estilização usando utilitários à la Tailwind
+O **FIAP Helpers** é um aplicativo desenvolvido em **React Native** com o objetivo de permitir que estudantes compartilhem conhecimentos e se ajudem em diferentes disciplinas e tecnologias.
 
-### Pré-requisitos
-- Node.js LTS instalado
-- Expo CLI (opcional) ou npx
-- iOS Simulator/Xcode ou Android Studio/Emulador, ou o aplicativo Expo Go no celular
+A ideia principal do projeto é criar uma **plataforma colaborativa**, onde alunos possam:
 
-### Como iniciar
-1. Instale as dependências:
-```bash
-npm install
-```
-2. Inicie o projeto:
-```bash
-npm run start
-```
-3. Escolha a plataforma:
-```bash
-# no terminal do Expo
-i  # iOS
-a  # Android
-w  # Web (quando aplicável)
-```
+- Fazer perguntas sobre conteúdos estudados
+- Ajudar outros alunos com respostas e explicações
+- Compartilhar experiências e materiais de estudo
 
-### Scripts úteis
-- `npm run start`: inicia o Metro/Expo
-- `npm run android`: abre no emulador Android
-- `npm run ios`: abre no simulador iOS
-- `npm run web`: abre no navegador (quando aplicável)
+Assim, o aplicativo promove **aprendizado colaborativo**, incentivando a troca de conhecimento entre estudantes.
 
-### Estrutura principal
-```
-assets/               # imagens e fontes
-styles/               # estilos globais e presets do NativeWind
-types/                # tipos e declarações auxiliares
-App.tsx               # entrada principal do app
-babel.config.js       # plugin do nativewind e presets do Expo
-metro.config.js       # config do Metro (resolução e assets)
-tailwind.config.js    # configuração do NativeWind/Tailwind
-nativewind-env.d.ts   # tipos do NativeWind
-tsconfig.json         # configuração TypeScript
-```
+---
 
-### Configuração do NativeWind
-O template já inclui as configurações essenciais para o NativeWind funcionar corretamente.
+# Projeto com:
 
-- `tailwind.config.js`: define o preset e paths a serem analisados
-```js
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    './App.{js,jsx,ts,tsx}',
-    './app/**/*.{js,jsx,ts,tsx}',
-    './components/**/*.{js,jsx,ts,tsx}',
-    './styles/**/*.{js,jsx,ts,tsx}',
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
-```
+- React Native
+- Expo
+- NativeWind
+- TailwindCSS
+- Expo Vector Icons
 
-- `babel.config.js`: adiciona o plugin do NativeWind
-```js
-module.exports = function(api) {
-  api.cache(true);
-  return {
-    presets: ['babel-preset-expo'],
-    plugins: ['nativewind/babel'],
-  };
-};
-```
+### Documentações utilizadas
 
-- `nativewind-env.d.ts`: fornece dicas de tipo
-```ts
-/// <reference types="nativewind/types" />
-```
+- https://reactnative.dev/docs/components-and-apis
+- https://www.nativewind.dev/docs/getting-started/installation
+- https://tailwindcss.com/docs/theme
+- https://icons.expo.fyi/Index
 
-Exemplo de uso no `App.tsx`:
-```tsx
-import { Text, View } from 'react-native';
+---
 
-export default function App() {
-  return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text className="text-xl font-semibold text-blue-600">
-        Template Expo + NativeWind
-      </Text>
-    </View>
-  );
-}
-```
+#  Integrantes
 
-### Dicas e resolução de problemas
-- Se classes não aplicarem estilo, confirme os caminhos em `content` do `tailwind.config.js`.
-- Garanta que o plugin `nativewind/babel` esteja no `babel.config.js`.
-- Após alterar `tailwind.config.js`, reinicie o bundler do Expo.
-- Em iOS/Android, limpe cache quando necessário:
-```bash
-expo start -c
-```
+| Nome | RM |
+|-----|-----|
+| Ana Clara de Melo 1 | RM559021 |
+| Lucas Serrano 2 | RM555170|
+| David Murillo 3 | RM559078 |
+| Yasmin Gonçalves 4 | RM559147 |
 
-### Licença
-Este projeto é disponibilizado como template educacional. Adapte conforme a sua necessidade.
-# app-fiap-mobile
+---
+
+# Funcionalidades da Tela de Login
+
+A tela de login permite que o usuário acesse o aplicativo informando suas credenciais.
+
+### Campos da tela
+
+- Email
+- Senha
+- Switch para lembrar usuário
+- Botão de login
+
+Também contém:
+
+- Logo do aplicativo
+- Título da aplicação
+- Interface simples e intuitiva
+
+---
+
+# Estilização
+
+A estilização foi feita utilizando:
+
+- **NativeWind**
+- **TailwindCSS**
+
+Isso permite uma estilização mais rápida, organizada e reutilizável.
+estilos aplicados:
+- Centralização de elementos
+- Espaçamentos
+- Bordas arredondadas
+- Cores personalizadas
+- Layout responsivo
+---
+
+# Requisitos do Projeto
+
+O projeto segue os requisitos definidos na atividade:
+
+- Desenvolvimento da tela de Login  
+- Utilização de componentes base do React Native  
+- Criação de componente personalizado  
+- Uso de biblioteca de ícones  
+- Estilização com NativeWind ou StyleSheet  
+- Organização do projeto conforme padrão apresentado em aula  
+
+
+
+
+# LoginScreen
+
+Componente **React Native** design da tela de login com UI responsiva.
+
+## Características 
+
+- **Componentes nativos:** `View`, `Text`, `TextInput`, `TouchableOpacity`, `Switch`, `Image`.
+- **React Hooks:** usa `useState` para controlar o estado do switch.
+- **Entrada de dados:** validação básica via `textContentType` e `keyboardType` para email; `secureTextEntry` para senha.
+- **Layout e estilo:** combina **StyleSheet** e classes utilitárias Tailwind (`bg-gray-950`, `rounded-2xl`, `shadow-md`).
+- **Responsividade:** usa flexbox para centralização e alinhamento, compatível com diferentes tamanhos de tela.
+
+
+---
+
+
+O **FIAP Helpers** busca facilitar a colaboração entre estudantes, criando um ambiente onde o conhecimento pode ser compartilhado de forma simples e rápida.
+
+A implementação da **tela de login** representa o primeiro passo para a construção do aplicativo, aplicando conceitos fundamentais de **React Native, componentização e estilização moderna**.
