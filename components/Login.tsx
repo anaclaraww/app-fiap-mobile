@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
+import { Alert } from "react-native";
 import {
     View,
     Text,
@@ -13,7 +13,16 @@ import {
 const LoginScreen: React.FC = () => {
 
     const [isNightPeriod, setIsNightPeriod] = useState(false);
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
 
+    const handleLogin = () => {
+        if (email === "admin" && senha === "123") {
+            Alert.alert("Sucesso", "Logado com sucesso!");
+        } else {
+            Alert.alert("Erro", "Email ou senha inválidos!");
+        }
+    };
 
     return (
         <View style={styles.container} className="bg-gray-950">
@@ -28,7 +37,7 @@ const LoginScreen: React.FC = () => {
                         style={styles.logoFh}
                         source={require('../assets/logo_hf.png')}
                     />
-                    <Image />
+
                     <Text className="text-gray-500 text-center">
                         Conectando estudantes e conhecimentos
                     </Text>
@@ -36,6 +45,8 @@ const LoginScreen: React.FC = () => {
 
                 <Text style={styles.label}>Email</Text>
                 <TextInput
+                    value={email}
+                    onChangeText={setEmail}
                     textContentType="emailAddress"
                     keyboardType="email-address"
                     placeholder="Digite seu email..."
@@ -45,6 +56,8 @@ const LoginScreen: React.FC = () => {
 
                 <Text style={styles.label}>Senha</Text>
                 <TextInput
+                    value={senha}
+                    onChangeText={setSenha}
                     placeholder="Digite sua senha..."
                     secureTextEntry
                     style={styles.input}
@@ -52,10 +65,10 @@ const LoginScreen: React.FC = () => {
                 />
 
                 <TouchableOpacity style={styles.row}>
-                    <Text className="text-gray-800 text-right font-medium">
+                    <Text className="text-gray-800 font-medium">
                         Não possui conta? Criar...
                     </Text>
-                    <Text className="text-blue-600 text-right font-medium items-end">
+                    <Text className="text-blue-600 font-medium">
                         Esqueci minha senha
                     </Text>
                 </TouchableOpacity>
@@ -63,13 +76,14 @@ const LoginScreen: React.FC = () => {
                 <TouchableOpacity
                     style={styles.button}
                     className="bg-pink-600 p-4 rounded-xl"
+                    onPress={handleLogin}
                 >
                     <Text className="text-white text-center font-bold text-lg">
                         Entrar
                     </Text>
                 </TouchableOpacity>
 
-                <View className="flex-row pt-3">
+                <View className="flex-row pt-3 items-center">
                     <Text>Manter logado?</Text>
                     <Switch
                         value={isNightPeriod}
@@ -79,9 +93,7 @@ const LoginScreen: React.FC = () => {
                     />
                 </View>
 
-
             </View>
-
         </View>
     );
 };
@@ -93,7 +105,6 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 25,
         justifyContent: "center",
-        fontFamily: ''
     },
 
     label: {
@@ -109,16 +120,18 @@ const styles = StyleSheet.create({
     button: {
         marginTop: 15,
     },
+
     logoFh: {
         width: 120,
         height: 100,
         marginTop: 5
     },
+
     row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        width: '100%', 
+        width: '100%',
         paddingHorizontal: 15
     },
 });
